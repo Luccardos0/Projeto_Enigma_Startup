@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma - Eventos</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81' },
+                        match: { 50: '#ecfdf5', 100: '#d1fae5', 600: '#059669', 700: '#047857' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen text-gray-800 overflow-hidden font-sans">
+
+    <!-- SIDEBAR ALUNO -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between hidden md:flex z-20">
+        <div>
+            <a href="index.html" class="h-20 flex items-center px-8 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                <span class="text-2xl font-bold text-brand-600 flex items-center gap-2">
+                    <i data-lucide="sparkles" class="text-brand-500 w-6 h-6"></i> enigma
+                </span>
+            </a>
+            <nav class="p-4 space-y-1">
+                <a href="index.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="home" class="w-5 h-5"></i> Início
+                </a>
+                <!-- Ativo (Vagas) -->
+                <a href="aluno.html" class="w-full flex items-center gap-3 px-4 py-3 text-brand-600 bg-brand-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="briefcase" class="w-5 h-5"></i> Vagas
+                </a>
+                <a href="eventos.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="calendar" class="w-5 h-5"></i> Eventos
+                </a>
+                <a href="curriculo.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="bot" class="w-5 h-5"></i> Currículo IA
+                </a>
+                <a href="carreira.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5"></i> Carreira
+                </a>
+                <!--<a href="talentos.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Talentos
+                </a>-->
+                <a href="empresa.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Empresa
+                </a>
+                <a href="perfil.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Perfil
+                </a>
+            </nav>
+        </div>
+        <div class="p-4 border-t border-gray-100">
+            <div class="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer rounded-lg transition-colors">
+                <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold">LM</div>
+                <div>
+                    <p class="text-sm font-semibold">Lucas</p>
+                    <p class="text-xs text-gray-500">Aluno</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        <!-- HEADER -->
+        <header class="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-8 sticky top-0 z-10 shadow-sm">
+            <div class="flex-1 max-w-2xl relative">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                <input type="text" placeholder="Buscar eventos, palestras ou empresas..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all text-sm">
+            </div>
+            <div class="flex items-center gap-4 ml-4">
+                <button class="text-gray-400 hover:text-brand-600 transition-colors relative ml-2">
+                    <i data-lucide="bell" class="w-6 h-6"></i>
+                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- CONTEÚDO DE EVENTOS -->
+        <div class="p-8 max-w-5xl mx-auto w-full pb-12 fade-in">
+            
+            <div class="mb-6">
+                <h1 class="text-3xl font-bold text-gray-900 mb-1">Eventos</h1>
+                <p class="text-gray-500">Acompanhe e inscreva-se nas principais feiras e palestras da UNICAMP.</p>
+            </div>
+
+            <!-- Filtros (Pílulas) -->
+            <div class="flex gap-2 overflow-x-auto pb-4 mb-4 scrollbar-hide">
+                <button class="px-5 py-2 bg-brand-600 text-white text-sm font-semibold rounded-full shadow-sm">Todos</button>
+                <button class="px-5 py-2 bg-white border border-gray-200 text-gray-600 hover:border-brand-500 hover:text-brand-600 text-sm font-semibold rounded-full transition-colors shadow-sm">Feiras de carreira</button>
+                <button class="px-5 py-2 bg-white border border-gray-200 text-gray-600 hover:border-brand-500 hover:text-brand-600 text-sm font-semibold rounded-full transition-colors shadow-sm">Palestras</button>
+                <button class="px-5 py-2 bg-white border border-gray-200 text-gray-600 hover:border-brand-500 hover:text-brand-600 text-sm font-semibold rounded-full transition-colors shadow-sm">Semanas acadêmicas</button>
+                <button class="px-5 py-2 bg-white border border-gray-200 text-gray-600 hover:border-brand-500 hover:text-brand-600 text-sm font-semibold rounded-full transition-colors shadow-sm">Meus Inscritos</button>
+            </div>
+
+            <!-- Destaque / Próximo Evento (Banner) -->
+            <div class="bg-gradient-to-r from-brand-800 to-brand-600 rounded-3xl p-8 text-white mb-10 shadow-lg relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between">
+                
+                <div class="relative z-10 max-w-lg">
+                    <div class="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-semibold mb-4 border border-white/20">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i> Próximo evento
+                    </div>
+                    <h2 class="text-3xl font-extrabold mb-4 leading-tight">Feira de Carreiras FT 2026</h2>
+                    
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-brand-100">
+                            <i data-lucide="calendar" class="w-5 h-5 opacity-80"></i>
+                            <span>28 de Outubro de 2026 • 09:00 às 18:00</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-brand-100">
+                            <i data-lucide="map-pin" class="w-5 h-5 opacity-80"></i>
+                            <span>Auditório da FT - UNICAMP Limeira</span>
+                        </div>
+                    </div>
+
+                    <button class="bg-match-500 hover:bg-match-600 text-white px-6 py-3 rounded-xl font-bold shadow-md transition-all flex items-center gap-2 group">
+                        Inscrições abertas <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+                
+                <!-- Ilustração decorativa no card (Mala de trabalho estilizada) -->
+                <div class="relative z-10 mt-8 md:mt-0 mr-4 hidden sm:block">
+                    <svg class="w-48 h-48 text-brand-400 opacity-60" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z" fill-opacity="0.3"/>
+                        <path d="M16 7V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M2 13H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                
+                <!-- Formas abstratas de fundo -->
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+            </div>
+
+            <!-- Lista: Próximos eventos -->
+            <div class="flex items-center justify-between mb-5">
+                <h3 class="text-xl font-bold text-gray-900">Próximos eventos</h3>
+                <a href="#" class="text-brand-600 text-sm font-semibold hover:underline flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- Evento 1 -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-200 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 group cursor-pointer">
+                    <div class="flex items-start sm:items-center gap-5">
+                        <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-teal-400 to-brand-600 flex items-center justify-center shadow-inner flex-shrink-0">
+                            <i data-lucide="briefcase" class="w-8 h-8 text-white opacity-90"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg group-hover:text-brand-600 transition-colors mb-1">Feira de Carreiras FT 2026</h4>
+                            <p class="text-gray-500 text-sm mb-2 font-medium flex items-center gap-1">
+                                <i data-lucide="users" class="w-3.5 h-3.5"></i> Liestag, Centro Acadêmico
+                            </p>
+                            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400 font-medium">
+                                <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 28 de Out</span>
+                                <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Auditório da FT</span>
+                                <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> 2.000 alunos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto h-full gap-3 mt-2 sm:mt-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-gray-100">
+                        <div class="flex items-center gap-1.5 bg-match-50 border border-match-100 text-match-700 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Inscrições abertas
+                        </div>
+                        <button class="text-brand-600 text-sm font-semibold hover:underline flex items-center gap-1">
+                            Ver detalhes <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Evento 2 -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-200 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 group cursor-pointer">
+                    <div class="flex items-start sm:items-center gap-5">
+                        <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-inner flex-shrink-0">
+                            <i data-lucide="mic" class="w-8 h-8 text-white opacity-90"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg group-hover:text-brand-600 transition-colors mb-1">Palestra: Carreira em Tecnologia</h4>
+                            <p class="text-gray-500 text-sm mb-2 font-medium flex items-center gap-1">
+                                <i data-lucide="building-2" class="w-3.5 h-3.5"></i> TechNova Soluções
+                            </p>
+                            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400 font-medium">
+                                <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 12 de Nov</span>
+                                <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Sala Multiuso</span>
+                                <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> 500 alunos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto h-full gap-3 mt-2 sm:mt-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-gray-100">
+                        <div class="flex items-center gap-1.5 bg-blue-50 border border-blue-100 text-blue-700 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm">
+                            <div class="w-2 h-2 rounded-full bg-blue-500"></div> Inscrito
+                        </div>
+                        <button class="text-brand-600 text-sm font-semibold hover:underline flex items-center gap-1">
+                            Ver detalhes <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Evento 3 -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-200 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 group cursor-pointer">
+                    <div class="flex items-start sm:items-center gap-5">
+                        <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-pink-500 to-orange-400 flex items-center justify-center shadow-inner flex-shrink-0">
+                            <i data-lucide="lightbulb" class="w-8 h-8 text-white opacity-90"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg group-hover:text-brand-600 transition-colors mb-1">Semana Acadêmica de Inovação</h4>
+                            <p class="text-gray-500 text-sm mb-2 font-medium flex items-center gap-1">
+                                <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> CA da Computação
+                            </p>
+                            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400 font-medium">
+                                <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 17 a 21 de Nov</span>
+                                <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> FT</span>
+                                <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> 1.500 alunos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto h-full gap-3 mt-2 sm:mt-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-gray-100">
+                        <div id="badge-inovacao" class="flex items-center gap-1.5 bg-match-50 border border-match-100 text-match-700 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm transition-all cursor-pointer hover:bg-match-100" onclick="toggleInscricao(this, event)">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Inscrever-se
+                        </div>
+                        <button class="text-brand-600 text-sm font-semibold hover:underline flex items-center gap-1">
+                            Ver detalhes <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Evento 4 -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-200 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 group cursor-pointer">
+                    <div class="flex items-start sm:items-center gap-5">
+                        <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-inner flex-shrink-0">
+                            <i data-lucide="bar-chart-3" class="w-8 h-8 text-white opacity-90"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg group-hover:text-brand-600 transition-colors mb-1">Painel: O Futuro do Trabalho</h4>
+                            <p class="text-gray-500 text-sm mb-2 font-medium flex items-center gap-1">
+                                <i data-lucide="users" class="w-3.5 h-3.5"></i> Liestag
+                            </p>
+                            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400 font-medium">
+                                <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 25 de Nov</span>
+                                <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Auditório da FT</span>
+                                <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> 800 alunos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto h-full gap-3 mt-2 sm:mt-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-gray-100">
+                        <div class="flex items-center gap-1.5 bg-blue-50 border border-blue-100 text-blue-700 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm">
+                            <div class="w-2 h-2 rounded-full bg-blue-500"></div> Inscrito
+                        </div>
+                        <button class="text-brand-600 text-sm font-semibold hover:underline flex items-center gap-1">
+                            Ver detalhes <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Função para simular inscrição em um evento
+        function toggleInscricao(element, event) {
+            // Evita que o clique acione o card inteiro
+            event.stopPropagation();
+            
+            // Muda o visual para "Inscrito"
+            element.className = "flex items-center gap-1.5 bg-blue-50 border border-blue-100 text-blue-700 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm transition-all";
+            element.innerHTML = '<div class="w-2 h-2 rounded-full bg-blue-500"></div> Inscrito';
+        }
+    </script>
+</body>
+</html>

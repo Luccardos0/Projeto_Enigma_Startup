@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma - Perfil do Talento</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81' },
+                        match: { 500: '#10b981', 100: '#d1fae5', 600: '#059669' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen text-gray-800 overflow-hidden font-sans">
+
+    <!-- SIDEBAR ALUNO -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between hidden md:flex z-20">
+        <div>
+            <a href="index.html" class="h-20 flex items-center px-8 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                <span class="text-2xl font-bold text-brand-600 flex items-center gap-2">
+                    <i data-lucide="sparkles" class="text-brand-500 w-6 h-6"></i> enigma
+                </span>
+            </a>
+            <nav class="p-4 space-y-1">
+                <a href="index.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="home" class="w-5 h-5"></i> Início
+                </a>
+                <!-- Ativo (Vagas) -->
+                <a href="aluno.html" class="w-full flex items-center gap-3 px-4 py-3 text-brand-600 bg-brand-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="briefcase" class="w-5 h-5"></i> Vagas
+                </a>
+                <a href="eventos.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="calendar" class="w-5 h-5"></i> Eventos
+                </a>
+                <a href="curriculo.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="bot" class="w-5 h-5"></i> Currículo IA
+                </a>
+                <a href="carreira.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5"></i> Carreira
+                </a>
+                <!--<a href="talentos.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Talentos
+                </a>-->
+                <a href="empresa.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Empresa
+                </a>
+                <a href="perfil.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Perfil
+                </a>
+            </nav>
+        </div>
+        <div class="p-4 border-t border-gray-100">
+            <div class="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer rounded-lg transition-colors">
+                <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold">LM</div>
+                <div>
+                    <p class="text-sm font-semibold">Lucas</p>
+                    <p class="text-xs text-gray-500">Aluno</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        <!-- HEADER -->
+        <header class="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-8 sticky top-0 z-10 shadow-sm">
+            <div class="flex-1 max-w-2xl relative">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                <input type="text" placeholder="Buscar no seu perfil ou configurações..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all text-sm">
+            </div>
+            <div class="flex items-center gap-4 ml-4">
+                <button class="text-gray-400 hover:text-brand-600 transition-colors relative ml-2">
+                    <i data-lucide="bell" class="w-6 h-6"></i>
+                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ÁREA DE PERFIL -->
+        <div class="p-8 max-w-5xl mx-auto w-full pb-12 fade-in">
+            
+            <!-- CARTÃO PRINCIPAL DE PERFIL -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm mb-8 relative overflow-hidden">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative z-10">
+                    <div class="flex items-center gap-6">
+                        <div class="w-24 h-24 rounded-2xl bg-gradient-to-tr from-brand-600 to-brand-400 text-white flex items-center justify-center text-3xl font-extrabold shadow-md border-4 border-white">
+                            LM
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-3 mb-1">
+                                <h1 class="text-2xl font-bold text-gray-900">Lucas M.</h1>
+                                <span class="px-3 py-1 bg-match-100 text-match-700 text-xs font-bold rounded-full flex items-center gap-1">
+                                    <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Perfil Verificado UNICAMP
+                                </span>
+                            </div>
+                            <p class="text-gray-500 text-sm font-medium mb-3">Sistemas de Informação • 6º Semestre • FT UNICAMP</p>
+                            
+                            <div class="flex flex-wrap items-center gap-3 text-xs text-gray-600 font-medium">
+                                <span class="flex items-center gap-1 bg-gray-100 px-2.5 py-1 rounded-md"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-gray-400"></i> Limeira / Campinas, SP</span>
+                                <span class="flex items-center gap-1 bg-gray-100 px-2.5 py-1 rounded-md"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-gray-400"></i> Disponível para Estágio Híbrido</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Badges & Ações -->
+                    <div class="flex flex-col items-end gap-3 w-full sm:w-auto border-t sm:border-t-0 border-gray-100 pt-4 sm:pt-0">
+                        <div class="flex items-center gap-2 bg-brand-50 border border-brand-200 px-4 py-2 rounded-xl">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-brand-600"></i>
+                            <div>
+                                <span class="block text-[10px] font-bold text-brand-500 uppercase tracking-wider">Prontidão IA</span>
+                                <span class="text-lg font-extrabold text-brand-900">72% de Score</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 w-full sm:w-auto">
+                            <button class="flex-1 sm:flex-none px-4 py-2.5 bg-white border border-gray-200 text-gray-700 font-semibold text-sm rounded-xl hover:bg-gray-50 transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+                                <i data-lucide="edit-3" class="w-4 h-4"></i> Editar
+                            </button>
+                            <button class="flex-1 sm:flex-none px-4 py-2.5 bg-brand-600 text-white font-semibold text-sm rounded-xl hover:bg-brand-700 transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+                                <i data-lucide="download" class="w-4 h-4"></i> Exportar PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- COLUNA DA ESQUERDA (2/3): Formação, Experiências e Projetos -->
+                <div class="lg:col-span-2 space-y-8">
+                    
+                    <!-- Sobre / Bio -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                        <h3 class="font-bold text-gray-900 text-lg mb-3 flex items-center gap-2">
+                            <i data-lucide="user-text" class="w-5 h-5 text-brand-600"></i> Sobre Mim
+                        </h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Estudante do 6º semestre de Sistemas de Informação na Faculdade de Tecnologia da UNICAMP (FT). Apaixonado por desenvolvimento backend, ciência de dados e tecnologias imersivas em WebVR. Experiência em liderança de eventos corporativos de carreira e relações públicas universitárias.
+                        </p>
+                    </div>
+
+                    <!-- Envolvimento Acadêmico & Extracurricular -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                        <h3 class="font-bold text-gray-900 text-lg mb-4 flex items-center gap-2">
+                            <i data-lucide="award" class="w-5 h-5 text-brand-600"></i> Atuação Universitária & Liderança
+                        </h3>
+                        <div class="space-y-4">
+                            <!-- Item 1 -->
+                            <div class="flex items-start gap-4 pb-4 border-b border-gray-100">
+                                <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                                    <i data-lucide="users" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm">Diretoria de Relações Públicas & Eventos</h4>
+                                    <p class="text-xs text-brand-600 font-semibold mb-1">Liestag (Liga de Estágios) & Centro Acadêmico • UNICAMP</p>
+                                    <p class="text-xs text-gray-500">Organização e gestão de feiras de carreiras, prospecção de patrocínios corporativos e ponte direta de comunicação entre empresas parceiras e os alunos.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                                    <i data-lucide="glasses" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm">Pesquisa & Iniciação Científica (WebVR)</h4>
+                                    <p class="text-xs text-blue-600 font-semibold mb-1">Faculdade de Tecnologia • UNICAMP</p>
+                                    <p class="text-xs text-gray-500">Desenvolvimento de simuladores imersivos em ambiente virtual 3D utilizando A-Frame, Three.js e shaders GLSL focados no ensino de Física Moderna.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projetos & Repositórios -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-gray-900 text-lg flex items-center gap-2">
+                                <i data-lucide="folder-git-2" class="w-5 h-5 text-brand-600"></i> Projetos em Destaque
+                            </h3>
+                            <button class="text-xs font-semibold text-brand-600 hover:underline">+ Adicionar projeto</button>
+                        </div>
+                        
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <!-- Projeto 1 -->
+                            <div class="p-4 border border-gray-200 rounded-xl hover:border-brand-300 transition-colors bg-gray-50/50">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-bold text-gray-900 text-sm">Simulador de Relatividade Restrita WebVR</h4>
+                                    <i data-lucide="external-link" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <p class="text-xs text-gray-500 mb-3 line-clamp-2">Visualização interativa da degradação de múons em 60 FPS no navegador.</p>
+                                <div class="flex gap-2">
+                                    <span class="px-2 py-0.5 bg-brand-50 text-brand-700 text-[10px] font-bold rounded">WebGL</span>
+                                    <span class="px-2 py-0.5 bg-gray-200 text-gray-700 text-[10px] font-bold rounded">GLSL Shaders</span>
+                                </div>
+                            </div>
+
+                            <!-- Projeto 2 -->
+                            <div class="p-4 border border-gray-200 rounded-xl hover:border-brand-300 transition-colors bg-gray-50/50">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-bold text-gray-900 text-sm">Sistema de Gestão Comercial</h4>
+                                    <i data-lucide="github" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <p class="text-xs text-gray-500 mb-3 line-clamp-2">Software de gestão de pedidos e estoque desenvolvido para estabelecimento comercial.</p>
+                                <div class="flex gap-2">
+                                    <span class="px-2 py-0.5 bg-brand-50 text-brand-700 text-[10px] font-bold rounded">Python</span>
+                                    <span class="px-2 py-0.5 bg-gray-200 text-gray-700 text-[10px] font-bold rounded">SQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- COLUNA DA DIREITA (1/3): Competências, Idiomas e Privacidade -->
+                <div class="space-y-8">
+                    
+                    <!-- Competências Técnicas & Soft Skills -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                        <h3 class="font-bold text-gray-900 text-lg mb-4 flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-5 h-5 text-brand-600"></i> Competências
+                        </h3>
+                        
+                        <div class="mb-5">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2">Hard Skills Validadas por IA</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-match-50 border border-match-200 text-match-700 text-xs font-bold rounded-lg flex items-center gap-1">
+                                    <i data-lucide="check" class="w-3.5 h-3.5"></i> Python
+                                </span>
+                                <span class="px-3 py-1.5 bg-match-50 border border-match-200 text-match-700 text-xs font-bold rounded-lg flex items-center gap-1">
+                                    <i data-lucide="check" class="w-3.5 h-3.5"></i> Lógica de Prog.
+                                </span>
+                                <span class="px-3 py-1.5 bg-brand-50 border border-brand-100 text-brand-700 text-xs font-bold rounded-lg">
+                                    SQL
+                                </span>
+                                <span class="px-3 py-1.5 bg-brand-50 border border-brand-100 text-brand-700 text-xs font-bold rounded-lg">
+                                    Git & GitHub
+                                </span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2">Idiomas & Certificados</span>
+                            <ul class="space-y-2 text-xs font-medium text-gray-700">
+                                <li class="flex justify-between items-center bg-gray-50 p-2 rounded-lg">
+                                    <span>Português</span> <span class="text-gray-400">Nativo</span>
+                                </li>
+                                <li class="flex justify-between items-center bg-gray-50 p-2 rounded-lg">
+                                    <span>Inglês</span> <span class="text-brand-600 font-bold">Avançado / Fluente</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Governança & Privacidade LGPD (Conceito da Startup) -->
+                    <div class="bg-brand-50 border border-brand-200 rounded-2xl p-6 shadow-sm">
+                        <div class="flex items-center gap-2 text-brand-900 font-bold text-sm mb-2">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-brand-600"></i> Governança de Dados (LGPD)
+                        </div>
+                        <p class="text-xs text-brand-700 leading-relaxed mb-4">
+                            Seus dados de prontidão e testes são compartilhados com empresas recrutadoras de forma anonimizada até que você aceite um convite de vaga.
+                        </p>
+                        <div class="flex items-center justify-between text-xs font-bold text-brand-900 border-t border-brand-200/60 pt-3">
+                            <span>Visibilidade do Perfil:</span>
+                            <span class="text-match-600 flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Ativo para empresas</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

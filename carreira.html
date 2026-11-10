@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma - Carreira e Prontidão</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81' },
+                        match: { 500: '#10b981', 100: '#d1fae5', 600: '#059669' },
+                        alert: { 500: '#f59e0b', 100: '#fef3c7' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen text-gray-800 overflow-hidden font-sans">
+
+    <!-- SIDEBAR ALUNO -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between hidden md:flex z-20">
+        <div>
+            <a href="index.html" class="h-20 flex items-center px-8 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                <span class="text-2xl font-bold text-brand-600 flex items-center gap-2">
+                    <i data-lucide="sparkles" class="text-brand-500 w-6 h-6"></i> enigma
+                </span>
+            </a>
+            <nav class="p-4 space-y-1">
+                <a href="index.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="home" class="w-5 h-5"></i> Início
+                </a>
+                <!-- Ativo (Vagas) -->
+                <a href="aluno.html" class="w-full flex items-center gap-3 px-4 py-3 text-brand-600 bg-brand-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="briefcase" class="w-5 h-5"></i> Vagas
+                </a>
+                <a href="eventos.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="calendar" class="w-5 h-5"></i> Eventos
+                </a>
+                <a href="curriculo.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="bot" class="w-5 h-5"></i> Currículo IA
+                </a>
+                <a href="carreira.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5"></i> Carreira
+                </a>
+                <!--<a href="talentos.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Talentos
+                </a>-->
+                <a href="empresa.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Empresa
+                </a>
+                <a href="perfil.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Perfil
+                </a>
+            </nav>
+        </div>
+        <div class="p-4 border-t border-gray-100">
+            <div class="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer rounded-lg transition-colors">
+                <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold">LM</div>
+                <div>
+                    <p class="text-sm font-semibold">Lucas</p>
+                    <p class="text-xs text-gray-500">Aluno</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        <!-- HEADER -->
+        <header class="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-8 sticky top-0 z-10 shadow-sm">
+            <div class="flex-1 max-w-2xl relative">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                <input type="text" placeholder="Buscar testes, habilidades ou áreas..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all text-sm">
+            </div>
+            <div class="flex items-center gap-4 ml-4">
+                <button class="text-gray-400 hover:text-brand-600 transition-colors relative ml-2">
+                    <i data-lucide="bell" class="w-6 h-6"></i>
+                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ÁREA DE CARREIRA -->
+        <div class="p-8 max-w-5xl mx-auto w-full pb-12 fade-in">
+            
+            <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-1">Evolução de Carreira</h1>
+                    <p class="text-gray-500">Entenda seu perfil e descubra o que falta para a sua vaga dos sonhos.</p>
+                </div>
+                <button class="bg-white border border-gray-200 text-brand-600 font-semibold px-4 py-2.5 rounded-xl hover:bg-gray-50 transition-colors shadow-sm flex items-center gap-2 text-sm">
+                    <i data-lucide="history" class="w-4 h-4"></i> Histórico de Testes
+                </button>
+            </div>
+
+            <!-- DASHBOARD DE PRONTIDÃO GLOBAL -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                
+                <!-- Card Principal: Termômetro -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="w-full flex justify-between items-center mb-2">
+                        <h3 class="font-bold text-gray-900 text-lg">Prontidão Geral</h3>
+                        <i data-lucide="info" class="w-4 h-4 text-gray-400 cursor-pointer hover:text-brand-600"></i>
+                    </div>
+                    
+                    <div class="relative w-40 h-40 flex items-center justify-center my-4">
+                        <svg viewBox="0 0 36 36" class="absolute top-0 left-0 w-full h-full transform -rotate-90">
+                            <!-- Background -->
+                            <path class="text-gray-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3" />
+                            <!-- Progresso (72%) -->
+                            <path class="text-match-500 drop-shadow-sm" stroke-dasharray="72, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                        <div class="flex flex-col items-center absolute">
+                            <span class="text-4xl font-extrabold text-gray-900 leading-none">72%</span>
+                            <span class="text-xs font-semibold text-match-600 mt-1 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3"></i> +5% este mês</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500">Seu perfil está <strong>forte</strong> para a área de Tecnologia.</p>
+                </div>
+
+                <!-- Detalhamento dos Pilares -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+                    <h3 class="font-bold text-gray-900 text-lg mb-4">Análise por Pilares</h3>
+                    
+                    <div class="space-y-5">
+                        <!-- Pilar Comportamental -->
+                        <div>
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="text-sm font-bold text-gray-700 flex items-center gap-2"><i data-lucide="brain" class="w-4 h-4 text-purple-500"></i> Comportamental (Soft Skills)</span>
+                                <span class="text-sm font-bold text-purple-600">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-2">
+                                <div class="bg-purple-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Pilar Técnico -->
+                        <div>
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="text-sm font-bold text-gray-700 flex items-center gap-2"><i data-lucide="code" class="w-4 h-4 text-blue-500"></i> Conhecimento Técnico</span>
+                                <span class="text-sm font-bold text-blue-600">60%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Pilar Acadêmico -->
+                        <div>
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="text-sm font-bold text-gray-700 flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4 text-brand-500"></i> Engajamento Acadêmico</span>
+                                <span class="text-sm font-bold text-brand-600">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-2">
+                                <div class="bg-brand-500 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAP ANALYSIS DA IA -->
+            <div class="flex items-center justify-between mb-4 mt-10">
+                <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-brand-500"></i> Recomendações da IA
+                </h3>
+            </div>
+
+            <div class="bg-brand-50 border border-brand-200 p-6 rounded-2xl mb-8">
+                <p class="text-brand-900 font-medium text-sm mb-4">A Enigma cruzou seu perfil com as vagas de <strong>Desenvolvimento Backend</strong> e <strong>Ciência de Dados</strong> que você favoritou. Veja o que falta para chegar aos 90% de aderência:</p>
+                
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <!-- Ação 1 -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-brand-100 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-alert-100 text-alert-500 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="database" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm mb-1">Mapear conhecimento em SQL</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Sua vaga alvo exige SQL avançado. Não temos dados sobre seu nível atual.</p>
+                            <button class="text-xs font-bold text-brand-600 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-lg transition-colors">Fazer Teste Técnico</button>
+                        </div>
+                    </div>
+
+                    <!-- Ação 2 -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-brand-100 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="message-square" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm mb-1">Avaliação de Inglês</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">O Google exige inglês intermediário. Atualize seu nível de proficiência.</p>
+                            <button class="text-xs font-bold text-brand-600 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-lg transition-colors">Declarar Nível</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MURAL DE TESTES -->
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900">Mural de Testes</h3>
+                <a href="#" class="text-brand-600 text-sm font-semibold hover:underline">Ver todos &rarr;</a>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4">
+                
+                <!-- Teste 1 -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:border-brand-300 transition-colors cursor-pointer group">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="p-2 bg-purple-50 text-purple-600 rounded-lg">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 bg-gray-100 px-2 py-1 rounded">10 min</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1 group-hover:text-brand-600 transition-colors">Fit Cultural & Valores</h4>
+                    <p class="text-xs text-gray-500 mb-4 line-clamp-2">Descubra em qual tipo de ambiente corporativo você se destaca mais.</p>
+                    <button class="w-full py-2 bg-white border border-gray-200 text-gray-700 font-semibold rounded-lg text-sm group-hover:bg-brand-600 group-hover:text-white group-hover:border-brand-600 transition-all">Iniciar Teste</button>
+                </div>
+
+                <!-- Teste 2 -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:border-brand-300 transition-colors cursor-pointer group">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="p-2 bg-blue-50 text-blue-600 rounded-lg">
+                            <i data-lucide="file-code-2" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 bg-gray-100 px-2 py-1 rounded">20 min</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1 group-hover:text-brand-600 transition-colors">Python Intermediário</h4>
+                    <p class="text-xs text-gray-500 mb-4 line-clamp-2">Valide seus conhecimentos em estruturas de dados e POO em Python.</p>
+                    <button class="w-full py-2 bg-white border border-gray-200 text-gray-700 font-semibold rounded-lg text-sm group-hover:bg-brand-600 group-hover:text-white group-hover:border-brand-600 transition-all">Iniciar Teste</button>
+                </div>
+
+                <!-- Teste 3 (Concluído) -->
+                <div class="bg-match-50 p-5 rounded-2xl border border-match-100 shadow-sm relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-match-100">
+                        <i data-lucide="check-circle" class="w-24 h-24"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="p-2 bg-white text-match-600 rounded-lg shadow-sm">
+                                <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-900 mb-1">Lógica de Programação</h4>
+                        <p class="text-xs text-match-700 mb-4">Teste concluído. Nível: Avançado.</p>
+                        <button class="w-full py-2 bg-white text-match-700 font-semibold rounded-lg text-sm shadow-sm" disabled>Ver Resultado</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

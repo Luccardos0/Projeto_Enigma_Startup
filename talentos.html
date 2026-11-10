@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma - Banco de Talentos</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9', 900: '#341499' },
+                        match: { 500: '#10b981', 100: '#d1fae5', 700: '#047857' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-[#f8f9fa] flex h-screen text-gray-800 overflow-hidden font-sans">
+
+    <!-- SIDEBAR B2B COM LINKS FUNCIONAIS -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between hidden md:flex z-20">
+        <div>
+            <!-- Logo Enigma (Volta para o index) -->
+            <a href="index.html" class="h-20 flex items-center px-8 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                <span class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+                    <i data-lucide="sparkles" class="text-brand-500 w-6 h-6"></i> enigma
+                </span>
+            </a>
+            <!-- Menu Lateral B2B -->
+            <nav class="p-4 space-y-1">
+                <a href="index.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="home" class="w-5 h-5"></i> Início
+                </a>
+                <!-- Ativo (Vagas) -->
+                <a href="aluno.html" class="w-full flex items-center gap-3 px-4 py-3 text-brand-600 bg-brand-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="briefcase" class="w-5 h-5"></i> Vagas
+                </a>
+                <a href="eventos.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="calendar" class="w-5 h-5"></i> Eventos
+                </a>
+                <a href="curriculo.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="bot" class="w-5 h-5"></i> Currículo IA
+                </a>
+                <a href="carreira.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5"></i> Carreira
+                </a>
+                <!--<a href="talentos.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Talentos
+                </a>-->
+                <a href="empresa.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Empresa
+                </a>
+                <a href="perfil.html" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-brand-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+                    <i data-lucide="user" class="w-5 h-5"></i> Perfil
+                </a>
+            </nav>
+        </div>
+        
+        <!-- Perfil da Empresa (Rodapé) -->
+        <div class="p-4 border-t border-gray-100">
+            <div class="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer rounded-lg transition-colors">
+                <div class="w-10 h-10 rounded-lg bg-gray-900 text-white flex items-center justify-center font-bold text-xs">
+                    TN
+                </div>
+                <div class="min-w-0">
+                    <p class="text-sm font-semibold truncate text-gray-900">TechNova</p>
+                    <p class="text-xs text-gray-500">Recrutador</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        
+        <!-- PAINEL DE TALENTOS -->
+        <div class="p-8 max-w-5xl mx-auto w-full fade-in pb-12">
+            
+            <!-- Título e Ações Superiores -->
+            <div class="flex items-end justify-between mb-6">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-gray-900 mb-1 tracking-tight">Talentos</h1>
+                    <p class="text-gray-500 text-sm font-medium">2.847 universitários</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors text-sm shadow-sm">
+                        <i data-lucide="download" class="w-4 h-4"></i> Exportar
+                    </button>
+                    <button class="flex items-center gap-2 px-4 py-2 bg-brand-900 text-white font-semibold rounded-xl hover:bg-brand-800 shadow-md transition-colors text-sm">
+                        Adicionar Vaga
+                    </button>
+                </div>
+            </div>
+
+            <!-- CARD DE RANKING POR VAGA (MÓDULO IA) -->
+            <div class="bg-brand-50/80 border border-brand-200 rounded-2xl p-5 mb-6 relative overflow-hidden shadow-sm">
+                <div class="flex items-center gap-2 text-brand-900 font-bold text-base mb-3 relative z-10">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-brand-600"></i>
+                    <h2>Ranking por vaga</h2>
+                </div>
+                
+                <div class="space-y-3 relative z-10">
+                    <div class="relative">
+                        <i data-lucide="briefcase" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4"></i>
+                        <select id="vaga-select" class="w-full pl-10 pr-10 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 appearance-none text-gray-600 text-sm font-medium cursor-pointer shadow-sm">
+                            <option value="">Escolha uma vaga para ranquear candidatos</option>
+                            <option value="1">Estágio em Desenvolvimento Backend — TechNova</option>
+                            <option value="2">Estágio em Ciência de Dados — TechNova</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none"></i>
+                    </div>
+                    
+                    <button id="btn-ia-rank" onclick="simularRankingIA()" class="w-full py-3 bg-brand-100/80 text-brand-900 border border-brand-200 font-bold rounded-xl hover:bg-brand-600 hover:text-white transition-all flex items-center justify-center gap-2 text-sm">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-brand-600"></i> Gerar ranking com IA
+                    </button>
+                </div>
+            </div>
+
+            <!-- BANNER DE SUCESSO DA IA -->
+            <div id="ia-success-banner" class="hidden fade-in bg-match-100 border border-match-500 text-match-700 rounded-xl p-3 flex items-center gap-3 mb-6 shadow-sm">
+                <div class="bg-match-500 rounded-full p-1 text-white">
+                    <i data-lucide="check" class="w-4 h-4"></i>
+                </div>
+                <div class="text-sm font-medium">
+                    Ranking gerado para <strong>Estágio em Desenvolvimento Backend</strong> • 2.847 perfis analisados.
+                </div>
+            </div>
+
+            <!-- CONTROLES DE BUSCA E FILTROS -->
+            <div class="flex items-center gap-3 mb-3">
+                <div class="flex-1 relative">
+                    <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4"></i>
+                    <input type="text" placeholder="Buscar por nome, curso ou habilidade" class="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 shadow-sm">
+                </div>
+                <button class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-50 shadow-sm">
+                    <i data-lucide="sliders-horizontal" class="w-4 h-4 text-gray-400"></i> Filtros <span class="bg-brand-600 text-white px-2 py-0.5 rounded-full text-xs font-bold">2</span>
+                </button>
+            </div>
+            
+            <!-- PÍLULAS DE FILTRO RÁPIDO -->
+            <div class="flex gap-2 overflow-x-auto pb-3 mb-4 scrollbar-hide">
+                <span class="px-3.5 py-1.5 bg-brand-50 border border-brand-200 text-brand-700 text-xs font-semibold rounded-full cursor-pointer hover:bg-brand-100 flex items-center gap-1">Curso <i data-lucide="chevron-down" class="w-3 h-3"></i></span>
+                <span class="px-3.5 py-1.5 bg-brand-50 border border-brand-200 text-brand-700 text-xs font-semibold rounded-full cursor-pointer hover:bg-brand-100 flex items-center gap-1">Semestre <i data-lucide="chevron-down" class="w-3 h-3"></i></span>
+                <span class="px-3.5 py-1.5 bg-brand-50 border border-brand-200 text-brand-700 text-xs font-semibold rounded-full cursor-pointer hover:bg-brand-100 flex items-center gap-1">Habilidades <i data-lucide="chevron-down" class="w-3 h-3"></i></span>
+                <span class="px-3.5 py-1.5 bg-brand-50 border border-brand-200 text-brand-700 text-xs font-semibold rounded-full cursor-pointer hover:bg-brand-100 flex items-center gap-1">Cidade <i data-lucide="chevron-down" class="w-3 h-3"></i></span>
+                <span class="px-3.5 py-1.5 bg-brand-50 border border-brand-200 text-brand-700 text-xs font-semibold rounded-full cursor-pointer hover:bg-brand-100 flex items-center gap-1">Disponibilidade</span>
+            </div>
+
+            <!-- OPÇÕES DE VISUALIZAÇÃO E ORDENAÇÃO -->
+            <div class="flex items-center justify-between mb-4 pb-2">
+                <div class="flex gap-1 text-gray-400">
+                    <button class="p-1.5 rounded-lg hover:bg-gray-100 text-brand-600 bg-brand-50"><i data-lucide="list" class="w-4 h-4"></i></button>
+                    <button class="p-1.5 rounded-lg hover:bg-gray-100"><i data-lucide="grid-2x2" class="w-4 h-4"></i></button>
+                </div>
+                <span id="order-label" class="text-xs font-medium text-gray-500 cursor-pointer flex items-center gap-1 hover:text-gray-700">
+                    Ordenar por: Mais recentes <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                </span>
+            </div>
+
+            <!-- LISTA DE CANDIDATOS -->
+            <div class="space-y-3 mb-6" id="talentos-list">
+                
+                <!-- Candidato 1: Mariana S. -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-sm flex items-center justify-between relative candidate-card group hover:border-brand-300 transition-colors" data-match="94">
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/150?img=47" alt="Mariana" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-base flex items-center gap-1.5">
+                                Mariana S. <i data-lucide="lock" class="w-3.5 h-3.5 text-gray-400"></i>
+                            </h4>
+                            <p class="text-gray-500 text-xs mb-2">Sistemas de Informação • 6º semestre</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-0.5 bg-brand-50 text-brand-700 text-xs font-medium rounded-md">Python</span>
+                                <span class="px-2.5 py-0.5 bg-brand-50 text-brand-700 text-xs font-medium rounded-md">SQL</span>
+                                <span class="px-2.5 py-0.5 bg-brand-50 text-brand-700 text-xs font-medium rounded-md">Machine Learning</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-12 h-12 flex items-center justify-center">
+                                <svg viewBox="0 0 36 36" class="absolute top-0 left-0 w-full h-full transform -rotate-90">
+                                    <path class="text-gray-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5" />
+                                    <path class="text-match-500" stroke-dasharray="78, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+                                </svg>
+                                <span class="text-xs font-extrabold text-gray-800">78%</span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-semibold mt-0.5">prontidão</span>
+                        </div>
+                        <button class="text-gray-400 hover:text-red-500 transition-colors"><i data-lucide="heart" class="w-5 h-5"></i></button>
+                    </div>
+                </div>
+
+                <!-- Candidato 2: Gabriel M. -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-sm flex items-center justify-between relative candidate-card group hover:border-brand-300 transition-colors" data-match="91">
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="Gabriel" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-base flex items-center gap-1.5">
+                                Gabriel M.
+                            </h4>
+                            <p class="text-gray-500 text-xs mb-2">Engenharia de Produção • 8º semestre</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-0.5 bg-brand-50 text-brand-700 text-xs font-medium rounded-md">Python</span>
+                                <span class="px-2.5 py-0.5 bg-brand-50 text-brand-700 text-xs font-medium rounded-md">Excel</span>
+                                <span class="px-2.5 py-0.5 bg-brand-50 text-brand-700 text-xs font-medium rounded-md">Análise de Dados</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-12 h-12 flex items-center justify-center">
+                                <svg viewBox="0 0 36 36" class="absolute top-0 left-0 w-full h-full transform -rotate-90">
+                                    <path class="text-gray-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5" />
+                                    <path class="text-match-500" stroke-dasharray="63, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+                                </svg>
+                                <span class="text-xs font-extrabold text-gray-800">63%</span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-semibold mt-0.5">prontidão</span>
+                        </div>
+                        <button class="text-gray-400 hover:text-red-500 transition-colors"><i data-lucide="heart" class="w-5 h-5"></i></button>
+                    </div>
+                </div>
+
+                <!-- Candidato 3: Julia C. -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-sm flex items-center justify-between relative candidate-card group hover:border-brand-300 transition-colors" data-match="89">
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Julia" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-base flex items-center gap-1.5">
+                                Julia C.
+                            </h4>
+                            <p class="text-gray-500 text-xs mb-2">Administração • 6º semestre</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-0.5 bg-brand-50 text-brand-700 text-xs font-medium rounded-md">Comunicação</span>
+                                <span class="px-2.5 py-0.5 bg-brand-50 text-brand-700 text-xs font-medium rounded-md">Excel</span>
+                                <span class="px-2.5 py-0.5 bg-brand-50 text-brand-700 text-xs font-medium rounded-md">Gestão</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="flex flex-col items-end">
+                            <div class="relative w-12 h-12 flex items-center justify-center">
+                                <svg viewBox="0 0 36 36" class="absolute top-0 left-0 w-full h-full transform -rotate-90">
+                                    <path class="text-gray-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5" />
+                                    <path class="text-match-500" stroke-dasharray="71, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+                                </svg>
+                                <span class="text-xs font-extrabold text-gray-800">71%</span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-semibold mt-0.5">prontidão</span>
+                        </div>
+                        <button class="text-gray-400 hover:text-red-500 transition-colors"><i data-lucide="heart" class="w-5 h-5"></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BANNER INFERIOR -->
+            <div class="bg-brand-50/70 border border-brand-100 rounded-xl p-3 text-center text-xs text-brand-900 font-medium flex items-center justify-center gap-1.5 shadow-sm">
+                <i data-lucide="info" class="w-4 h-4 text-brand-600"></i> Acesso completo disponível no plano Enterprise
+            </div>
+
+        </div>
+    </main>
+
+    <!-- SCRIPT DE INTERATIVIDADE -->
+    <script>
+        lucide.createIcons();
+
+        function simularRankingIA() {
+            const btn = document.getElementById('btn-ia-rank');
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Ranqueando candidatos...';
+            btn.disabled = true;
+            lucide.createIcons();
+
+            setTimeout(() => {
+                btn.innerHTML = '<i data-lucide="refresh-cw" class="w-4 h-4"></i> Atualizar ranking';
+                btn.disabled = false;
+                document.getElementById('ia-success-banner').classList.remove('hidden');
+                document.getElementById('order-label').innerHTML = 'Ordenar por: Maior aderência IA <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-brand-600"></i>';
+                lucide.createIcons();
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
